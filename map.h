@@ -53,9 +53,11 @@ public:
    //
    map() 
    {
+      //custom::BST bst();
    }
    map(const map &  rhs) 
    { 
+      //BST(std::move(rhs)); 
    }
    map(map && rhs) 
    { 
@@ -137,6 +139,7 @@ public:
    //
    void clear() noexcept
    {
+      bst.clear(); 
    }
    size_t erase(const K& k);
    iterator erase(iterator it);
@@ -145,8 +148,8 @@ public:
    //
    // Status
    //
-   bool empty() const noexcept { return false; }
-   size_t size() const noexcept { return 99; }
+   bool empty() const noexcept { return bst.empty(); }
+   size_t size() const noexcept { return bst.size(); }
 
 
 private:
@@ -238,6 +241,7 @@ template <typename K, typename V>
 V& map <K, V> :: operator [] (const K& key)
 {
    return *(new V);
+   
 }
 
 /*****************************************************
@@ -277,6 +281,7 @@ const V& map <K, V> ::at(const K& key) const
 template <typename K, typename V>
 void swap(map <K, V>& lhs, map <K, V>& rhs)
 {
+   lhs.bst.swap(rhs.bst); 
 }
 
 /*****************************************************
